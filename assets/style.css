@@ -48,6 +48,7 @@
   padding: 15px;
   margin: 0rem;
   color: lightgrey;
+  margin-bottom: 1rem;
 }
 
 .card-date {
@@ -105,10 +106,9 @@
   width: 100%;
   border-radius: 5px;
   padding: 0.25rem;
-  margin-bottom: .5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   background-color: transparent;
   font-size: 18px;
-  margin-top: 30px;
+  margin-top: 8px;
 
 }

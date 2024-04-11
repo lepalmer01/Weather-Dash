@@ -6,16 +6,6 @@ const forecastContainer = document.getElementById("forecast");
 var cityList = document.getElementById("city-list");
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-/*
-    imports
-
-    global scope stuff
-
-    functions
-
-    exports
-*/
-
 // function to push city name to search history array in local storage
 searchInput.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -59,7 +49,6 @@ function getLatLon(city) {
       console.log(data);
       var lat = data.coord.lat;
       var lon = data.coord.lon;
-      // renderButton(city);
       getCurrent(lat, lon);
       getForecast(lat, lon);
     })
@@ -81,12 +70,7 @@ function getCurrent(lat, lon) {
 
 function getWeatherIcon(condition, now, sunrise, sunset) {
   now /= 1000;
-  // console.log(`
-  //   condition: ${condition},
-  //   now: ${now},
-  //   sunrise: ${sunrise},
-  //   sunset: ${sunset},
-  // `)
+
   switch (condition) {
     case "Clear":
       return "./assets/images/Clear.png";
@@ -149,7 +133,6 @@ function displayWeatherdata(data) {
 
   var iconImg = document.createElement("img");
   var condition = data.list[0].weather[0].main;
-  // iconImg.src = `https://openweathermap.org/img/w/${icon}.png`;
   iconImg.src = iconUrl;
   iconImg.className = "getCurrent-icon";
   weatherDataDiv.appendChild(iconImg);
@@ -222,7 +205,6 @@ function getForecast(lat, lon) {
         cardDiv.appendChild(dateDiv);
 
         var icon = document.createElement("img");
-        // icon.src = `https://openweathermap.org/img/w/${dayData.weather[0].icon}.png`;
         var condition = dayData.weather[0].main;
         icon.src = getWeatherIcon(
           condition,
@@ -258,7 +240,6 @@ function getForecast(lat, lon) {
 }
 
 // get previous city search history from local storage
-
 renderButtons();
 
 function renderButtons() {
