@@ -1,26 +1,33 @@
 var apiKey = "69dacd3e106811916a8d25c1fbe9dc73"; //my API key
 var now = dayjs().format("MM/DD/YYYY");
 
-// function to push city name to search history array in local storage
-document
-  .getElementById("search-input")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      var city = this.value;
-      var searchHistory =
-        JSON.parse(localStorage.getItem("searchHistory")) || [];
+const searchInput = document.getElementById("search-input");
+var cityList = document.getElementById("city-list");
 
-      //   check if city is already in search history
-      if (!searchHistory.includes(city)) {
-        searchHistory.push(city);
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-        renderButtons(city);
-        getLatLon(city);
-      } else {
-        alert("City already in search history");
-      }
-    }
-  });
+// function to push city name to search history array in local storage
+searchInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    search();
+  }
+});
+
+function search() {
+  var city = searchInput.value;
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+  //   check if city is already in search history
+  if (!searchHistory.includes(city)) {
+    searchHistory.push(city);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    getLatLon(city);
+    renderButtons();
+  } else {
+    alert("City already in search history");
+  }
+}
+
+const searchButton = document.getElementById("basic-addon2");
+searchButton.addEventListener("click", search);
 
 // function to call weather api based on user input when search history button is clicked
 function getLatLon(city) {
@@ -38,7 +45,7 @@ function getLatLon(city) {
       console.log(data);
       var lat = data.coord.lat;
       var lon = data.coord.lon;
-      renderButtons(city); // Move this line here
+      // renderButton(city);
       getCurrent(lat, lon);
       getForecast(lat, lon);
     })
@@ -52,7 +59,7 @@ function getCurrent(lat, lon) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      console.log("data:", data);
       displayWeatherdata(data);
     })
     .catch((error) => console.error("Error:", error));
@@ -60,7 +67,7 @@ function getCurrent(lat, lon) {
 
 // function to display city weather data on screen
 function displayWeatherdata(data) {
-  console.log(data);
+  // console.log(data);
 
   // create elements to display the current weather data
   // data object contains the current weather information accessible for the city
@@ -83,10 +90,6 @@ function displayWeatherdata(data) {
   weatherDataDiv.append(city);
   weatherDataDiv.style.color = "white";
 
-  //   var date = document.createElement("h3");
-  //   date.textContent = new Date().toLocaleDateString();
-  //   weatherDataDiv.appendChild(date);
-
   var iconImg = document.createElement("img");
   iconImg.src = `https://openweathermap.org/img/w/${icon}.png`;
   iconImg.className = "getCurrent-icon";
@@ -99,12 +102,12 @@ function displayWeatherdata(data) {
 
   var temperatureCard = document.createElement("div");
   temperatureCard.className = "temperature";
-  temperatureCard.textContent = `Temperature: ${temperature}`+ ' F';
+  temperatureCard.textContent = `Temperature: ${temperature}` + " F";
   weatherDataDiv.appendChild(temperatureCard);
 
   var feels_likeDiv = document.createElement("div");
   feels_likeDiv.className = "feels-like";
-  feels_likeDiv.textContent = `Feels Like: ${feelslike}`+ ' F';
+  feels_likeDiv.textContent = `Feels Like: ${feelslike}` + " F";
   weatherDataDiv.appendChild(feels_likeDiv);
 
   var humidityDiv = document.createElement("div");
@@ -179,20 +182,22 @@ function getForecast(lat, lon) {
 
 // get previous city search history from local storage
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-searchHistory.forEach(renderButtons);
+renderButtons();
+
+function renderButtons() {
+  cityList.innerHTML = "";
+  searchHistory.forEach(renderButton);
+}
 
 // create buttons for each city, assign value and display on screen
-function renderButtons(city) {
-  var cityList = document.getElementById("city-list");
-  var cityListItem = document.createElement("btn");
+function renderButton(city) {
+  var cityListItem = document.createElement("button");
   cityListItem.className = "list-group-item list-group-item-action";
   cityListItem.textContent = city;
 
   // Add event listener to the button
   cityListItem.addEventListener("click", function () {
     getLatLon(city);
-    getForecast(city);
-    getCurrent(city);
   });
 
   cityList.appendChild(cityListItem);

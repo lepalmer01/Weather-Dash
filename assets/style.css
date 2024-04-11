@@ -1,100 +1,95 @@
 /* .container { */
-    /* border-radius: 15px;
+/* border-radius: 15px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1); */
 /* } */
 .box {
-    display: flex;
-    flex-direction: column;
-    background-color: lightblue;
-    /* background-color: rgba(173, 216, 230, 0.5); */
-    height: 100vh;
-    gap: 75px;
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  /* background-color: rgba(173, 216, 230, 0.5); */
+  height: 100vh;
+  gap: 75px;
 }
 
 #weather-data {
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    margin: 0;
-    /* box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  */
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 0;
+  /* box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);  */
 }
 
-.five-day-title{
-    font-size: 26px;
-    font-weight: bold;
-    padding: 1rem;
+.five-day-title {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 1rem;
 }
 
 #forecast {
-    flex: .85;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1); 
-    padding: 1rem;
-
-} 
+  flex: 0.85;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
 
 .card {
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1); 
-    background-color: transparent;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 0rem; 
-
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 0rem;
 }
 
 .card-date {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .getCurrent-icon {
-    width: 150px;
-    height: 150px;
-
+  width: 150px;
+  height: 150px;
 }
 
 .weather-description {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .temperature {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .feels-like {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .humidity {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .wind-speed {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-.icon-img
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-    height: 100px;
+.icon-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
 }
-
 
 #footer-text {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 16px;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+  margin-bottom: 1rem;
 }
